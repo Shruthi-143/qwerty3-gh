@@ -5,14 +5,14 @@ on:
     branches:
       - main
   workflow_dispatch:   
-env: 
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Another Workflow
+        env:
+          MY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: peter-evans/repository-dispatch@v1
         with:
           repository: ${{ github.repository }}
